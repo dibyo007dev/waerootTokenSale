@@ -16,26 +16,50 @@
       "type": "function"
     },
     {
-      "inputs": [],
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_initialSupply",
+          "type": "uint256"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "constructor"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5062989680600081905550609e806100296000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b600054815600a165627a7a7230582031cd12bd083e94a97ff1a75de3479dc9e4b501b5138e38ee423aa59ccf4abf860029",
-  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd146044575b600080fd5b348015604f57600080fd5b506056606c565b6040518082815260200191505060405180910390f35b600054815600a165627a7a7230582031cd12bd083e94a97ff1a75de3479dc9e4b501b5138e38ee423aa59ccf4abf860029",
-  "sourceMap": "25:218:0:-;;;181:60;8:9:-1;5:2;;;30:1;27;20:12;5:2;181:60:0;226:8;212:11;:22;;;;25:218;;;;;;",
-  "deployedSourceMap": "25:218:0:-;;;;;;;;;;;;;;;;;;;;;;;;147:23;;8:9:-1;5:2;;;30:1;27;20:12;5:2;147:23:0;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.2;\n\ncontract DappToken {\n    // Constructor\n    // Set the total number of tokens\n    // Read the total number of tokens\n\n    uint public totalSupply;\n    \n    constructor() public {\n        totalSupply = 10000000;\n    }\n}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160208061015e8339810180604052810190808051906020019092919050505080600081905550506101148061004a6000396000f3006080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd14604e57806370a08231146076575b600080fd5b348015605957600080fd5b50606060ca565b6040518082815260200191505060405180910390f35b348015608157600080fd5b5060b4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505060d0565b6040518082815260200191505060405180910390f35b60005481565b600160205280600052604060002060009150905054815600a165627a7a72305820ed1ad306a61417b7fa665c393a46911ca57e25bc0cd484d486e4777119bf82440029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806318160ddd14604e57806370a08231146076575b600080fd5b348015605957600080fd5b50606060ca565b6040518082815260200191505060405180910390f35b348015608157600080fd5b5060b4600480360381019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505060d0565b6040518082815260200191505060405180910390f35b60005481565b600160205280600052604060002060009150905054815600a165627a7a72305820ed1ad306a61417b7fa665c393a46911ca57e25bc0cd484d486e4777119bf82440029",
+  "sourceMap": "25:228:0:-;;;128:123;8:9:-1;5:2;;;30:1;27;20:12;5:2;128:123:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;192:14;178:11;:28;;;;128:123;25:228;;;;;;",
+  "deployedSourceMap": "25:228:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;50:23;;8:9:-1;5:2;;;30:1;27;20:12;5:2;50:23:0;;;;;;;;;;;;;;;;;;;;;;;80:41;;8:9:-1;5:2;;;30:1;27;20:12;5:2;80:41:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;50:23;;;;:::o;80:41::-;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.2;\n\ncontract DappToken {\n    uint public totalSupply;\n\n    mapping(address => uint) public balanceOf;\n\n    constructor(uint _initialSupply) public {\n        totalSupply = _initialSupply;\n        // allocate the entire supply\n    }\n}",
   "sourcePath": "/Users/dibs/Desktop/ETHIndia/waerootTokenSale/contracts/DappToken.sol",
   "ast": {
     "absolutePath": "/Users/dibs/Desktop/ETHIndia/waerootTokenSale/contracts/DappToken.sol",
     "exportedSymbols": {
       "DappToken": [
-        12
+        18
       ]
     },
-    "id": 13,
+    "id": 19,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -55,9 +79,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 12,
+        "id": 18,
         "linearizedBaseContracts": [
-          12
+          18
         ],
         "name": "DappToken",
         "nodeType": "ContractDefinition",
@@ -67,8 +91,8 @@
             "id": 3,
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "147:23:0",
+            "scope": 18,
+            "src": "50:23:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -79,7 +103,7 @@
               "id": 2,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "147:4:0",
+              "src": "50:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -89,27 +113,72 @@
             "visibility": "public"
           },
           {
+            "constant": false,
+            "id": 7,
+            "name": "balanceOf",
+            "nodeType": "VariableDeclaration",
+            "scope": 18,
+            "src": "80:41:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 6,
+              "keyType": {
+                "id": 4,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "88:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "80:24:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 5,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "99:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
-              "id": 10,
+              "id": 16,
               "nodeType": "Block",
-              "src": "202:39:0",
+              "src": "168:83:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 8,
+                    "id": 14,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 6,
+                      "id": 12,
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "212:11:0",
+                      "src": "178:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -119,36 +188,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "3130303030303030",
-                      "id": 7,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "kind": "number",
-                      "lValueRequested": false,
-                      "nodeType": "Literal",
-                      "src": "226:8:0",
-                      "subdenomination": null,
+                      "id": 13,
+                      "name": "_initialSupply",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9,
+                      "src": "192:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_10000000_by_1",
-                        "typeString": "int_const 10000000"
-                      },
-                      "value": "10000000"
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
                     },
-                    "src": "212:22:0",
+                    "src": "178:28:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 9,
+                  "id": 15,
                   "nodeType": "ExpressionStatement",
-                  "src": "212:22:0"
+                  "src": "178:28:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 11,
+            "id": 17,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -156,39 +220,66 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4,
+              "id": 10,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "192:2:0"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9,
+                  "name": "_initialSupply",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17,
+                  "src": "140:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "139:21:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 5,
+              "id": 11,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "202:0:0"
+              "src": "168:0:0"
             },
-            "scope": 12,
-            "src": "181:60:0",
+            "scope": 18,
+            "src": "128:123:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 13,
-        "src": "25:218:0"
+        "scope": 19,
+        "src": "25:228:0"
       }
     ],
-    "src": "0:243:0"
+    "src": "0:253:0"
   },
   "legacyAST": {
     "absolutePath": "/Users/dibs/Desktop/ETHIndia/waerootTokenSale/contracts/DappToken.sol",
     "exportedSymbols": {
       "DappToken": [
-        12
+        18
       ]
     },
-    "id": 13,
+    "id": 19,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -208,9 +299,9 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 12,
+        "id": 18,
         "linearizedBaseContracts": [
-          12
+          18
         ],
         "name": "DappToken",
         "nodeType": "ContractDefinition",
@@ -220,8 +311,8 @@
             "id": 3,
             "name": "totalSupply",
             "nodeType": "VariableDeclaration",
-            "scope": 12,
-            "src": "147:23:0",
+            "scope": 18,
+            "src": "50:23:0",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -232,7 +323,7 @@
               "id": 2,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "147:4:0",
+              "src": "50:4:0",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -242,27 +333,72 @@
             "visibility": "public"
           },
           {
+            "constant": false,
+            "id": 7,
+            "name": "balanceOf",
+            "nodeType": "VariableDeclaration",
+            "scope": 18,
+            "src": "80:41:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+              "typeString": "mapping(address => uint256)"
+            },
+            "typeName": {
+              "id": 6,
+              "keyType": {
+                "id": 4,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "88:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "80:24:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                "typeString": "mapping(address => uint256)"
+              },
+              "valueType": {
+                "id": 5,
+                "name": "uint",
+                "nodeType": "ElementaryTypeName",
+                "src": "99:4:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
             "body": {
-              "id": 10,
+              "id": 16,
               "nodeType": "Block",
-              "src": "202:39:0",
+              "src": "168:83:0",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 8,
+                    "id": 14,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-                      "id": 6,
+                      "id": 12,
                       "name": "totalSupply",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 3,
-                      "src": "212:11:0",
+                      "src": "178:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -272,36 +408,31 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-                      "hexValue": "3130303030303030",
-                      "id": 7,
-                      "isConstant": false,
-                      "isLValue": false,
-                      "isPure": true,
-                      "kind": "number",
-                      "lValueRequested": false,
-                      "nodeType": "Literal",
-                      "src": "226:8:0",
-                      "subdenomination": null,
+                      "id": 13,
+                      "name": "_initialSupply",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9,
+                      "src": "192:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_rational_10000000_by_1",
-                        "typeString": "int_const 10000000"
-                      },
-                      "value": "10000000"
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
                     },
-                    "src": "212:22:0",
+                    "src": "178:28:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 9,
+                  "id": 15,
                   "nodeType": "ExpressionStatement",
-                  "src": "212:22:0"
+                  "src": "178:28:0"
                 }
               ]
             },
             "documentation": null,
-            "id": 11,
+            "id": 17,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -309,30 +440,57 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 4,
+              "id": 10,
               "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "192:2:0"
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9,
+                  "name": "_initialSupply",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17,
+                  "src": "140:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 8,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "139:21:0"
             },
             "payable": false,
             "returnParameters": {
-              "id": 5,
+              "id": 11,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "202:0:0"
+              "src": "168:0:0"
             },
-            "scope": 12,
-            "src": "181:60:0",
+            "scope": 18,
+            "src": "128:123:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-        "scope": 13,
-        "src": "25:218:0"
+        "scope": 19,
+        "src": "25:228:0"
       }
     ],
-    "src": "0:243:0"
+    "src": "0:253:0"
   },
   "compiler": {
     "name": "solc",
@@ -342,10 +500,10 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x88f8f5d74c647461f6ea00127ef5d5b6c9739128",
-      "transactionHash": "0xb9e9f5c4bfe27ce76f2a31bd5f63dbc80b48da1200f5c9960b3a2ed67cb310e6"
+      "address": "0x9e5c6346423de4a4c9a8bbc154bf48388b75ae6d",
+      "transactionHash": "0x9869b6592fb62c02faaac4337717c49268b5b04cb0242088c53211c9bc7fd39b"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-08-24T22:48:35.703Z"
+  "updatedAt": "2018-08-25T08:19:40.851Z"
 }
