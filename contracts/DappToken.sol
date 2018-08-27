@@ -10,12 +10,21 @@ contract DappToken {
     
     uint public totalSupply;
 
-    mapping(address => uint) public balanceOf;
+    mapping(address => uint256) public balanceOf;
+    // Allowance
+    mapping(address => mapping(address => uint256) )public allowance;
 
     // Transfer Event
     event Transfer(
         address indexed _from,
         address indexed _to,
+        uint256 _value
+    );
+    // Approve Event
+
+    event Approval(
+        address indexed _owner,
+        address indexed _spender,
         uint256 _value
     );
 
@@ -39,5 +48,33 @@ contract DappToken {
     // Return a boolean
         return true;
 
+    }
+
+    // Delegated Transfers
+
+    // Approve
+    function approve(address _spender, uint256 _value) public returns(bool) {
+        // Handle the allowance
+        allowance[msg.sender][_spender] = _value;
+        // Handle the approve event 
+        emit Approval(msg.sender, _spender, _value);
+        return true;
+    }
+    // Transfer from
+    function transferFrom(address _from, address _to, uint256 _value) public returns(bool success) {
+
+        // Require the from acc have enough tokens
+        require(_value <= balanceOf[_from], "not enough balance");
+        // Requre the allowance is big enough
+        require(_value <= allowance[_from][msg.sender], " transfer values is not allowed for the sender");
+        // Change the balance
+        balanceOf[_from] -= _value;
+        balanceOf[_to] += _value;
+        // Update the alownace
+        allowance[_from][msg.sender] -= _value;
+        // Transfer event
+        emit Transfer(_from, _to, _value);
+        // Returns a boolean      
+        return true;
     }
 }
