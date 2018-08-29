@@ -111,4 +111,35 @@ contract("DusterTokenSale", function(accounts) {
         );
       });
   });
+
+  it("ends token sale", function() {
+    return DappToken.deployed()
+      .then(function(instance) {
+        tokenInstance = instance;
+        return DusterTokenSale.deployed();
+      })
+      .then(function(instance) {
+        tokenSaleInstance = instance;
+        // try to end sale  from the account other than the admin
+        return tokenSaleInstance.endSale({ from: buyer });
+      })
+      .then(assert.fail)
+      .catch(function(err) {
+        assert(
+          err.message.indexOf("revert") >= 0,
+          "must be admin to end the sale"
+        );
+        return tokenSaleInstance.endSale({ from: admin });
+      })
+      .then(function(reciept) {
+        // Check the reciept
+        return tokenInstance.balanceOf(admin);
+      })
+      .then(function(balance) {
+        assert.equal(balance.toNumber(), 9999990);
+        // Check that the contract has no balance
+        balance = web3.eth.getBalance(tokenSaleInstance.address);
+        assert.equal(balance.toNumber(), 0);
+      });
+  });
 });

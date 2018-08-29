@@ -47,5 +47,18 @@ contract DusterTokenSale {
         emit Sell(msg.sender, _numberOfTokens);
         
     }
+    // Ending the TokenSale
 
+    function endSale() public {
+        // Require admin
+        require(msg.sender == admin);
+
+        // Transfer the remaining dapp tokens to the admin
+        require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));
+        
+        // Destroy DusterTokenSaleContract
+        // UPDATE: Let's not destroy the contract here
+        // Just transfer the balance to the admin
+        admin.transfer(address(this).balance);   
+    }
 }
